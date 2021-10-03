@@ -4,10 +4,16 @@ import "reflect-metadata";
 import sourceMapSupport from "source-map-support";
 import "module-alias/register";
 import Test from "src/controller/Test";
+import { json, urlencoded } from "body-parser";
+import db from "src/db";
 //JS error message mapping
 sourceMapSupport.install();
 
 const app = express();
+
+const jsonParser = json();
+
+const urlencodedParser = urlencoded({ extended: false, limit: 1024 * 1024 * 5 });
 
 [Test].forEach((controller) => {
 	const instance = new controller();
@@ -23,6 +29,11 @@ const app = express();
 	});
 });
 
-app.listen(3002, () => {
+app.use(jsonParser);
+app.use(urlencodedParser);
+
+// const dbconnect = db();
+
+app.listen(3002, "0.0.0.0", () => {
 	console.log("Started express on port 3002");
 });

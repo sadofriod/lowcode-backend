@@ -1,0 +1,142 @@
+{
+	"code": 200,
+	"data": {
+		"canvas": {
+			"appId": 146,
+			"backgroundColor": "#0D2A41",
+			"backgroundImg": "http://img11.360buyimg.com/jdvpaas/jfs/t1/72026/9/16541/332152/61372141E7ef0fa70/ee681489fd6be60d.jpg",
+			"compInsts": [
+				{
+					"alias": "普通文本",
+					"attr": {
+						"top": 389,
+						"left": 1037,
+						"width": 300,
+						"angle": 0,
+						"scale": [1, 1],
+						"lock": false,
+						"opacity": 1,
+						"height": 72
+					},
+					"code": "commonTitle_077a6c",
+					"compCode": "commonTitle",
+					"compTempCode": "index",
+					"config": {
+						"link": {
+							"isBlank": false,
+							"url": ""
+						},
+						"style": {
+							"fontFamily": "FZLTTHJW",
+							"color": "#fff",
+							"textAlign": "left",
+							"letterSpacing": 0,
+							"fontSize": 28,
+							"lineHeight": 1.5,
+							"textShadow": "",
+							"fontWeight": "normal",
+							"writingMode": "horizontal-tb"
+						},
+						"title": "默认文本"
+					},
+					"dataConfig": {
+						"autoRefresh": false,
+						"dataParams": [],
+						"dataSourceType": 0,
+						"fieldMap": [
+							{
+								"sourceFieldName": "",
+								"compFieldName": "value"
+							}
+						],
+						"frequency": 1,
+						"mockData": [
+							{
+								"content": ""
+							}
+						],
+						"specScript": ""
+					},
+					"hided": false,
+					"id": 169771,
+					"locked": false,
+					"title": ""
+				},
+				{
+					"alias": "普通文本",
+					"attr": {
+						"top": 850,
+						"left": 712,
+						"width": 300,
+						"angle": 0,
+						"scale": [1, 1],
+						"lock": false,
+						"opacity": 1,
+						"height": 72
+					},
+					"code": "commonTitle_6c5533",
+					"compCode": "commonTitle",
+					"compTempCode": "index",
+					"config": {
+						"link": {
+							"isBlank": false,
+							"url": ""
+						},
+						"style": {
+							"fontFamily": "FZLTTHJW",
+							"color": "#fff",
+							"textAlign": "left",
+							"letterSpacing": 0,
+							"fontSize": 28,
+							"lineHeight": 1.5,
+							"textShadow": "",
+							"fontWeight": "normal",
+							"writingMode": "horizontal-tb"
+						},
+						"title": "默认文本"
+					},
+					"dataConfig": {
+						"autoRefresh": false,
+						"dataParams": [],
+						"dataSourceType": 0,
+						"fieldMap": [
+							{
+								"sourceFieldName": "",
+								"compFieldName": "value"
+							}
+						],
+						"frequency": 1,
+						"mockData": [
+							{
+								"content": ""
+							}
+						],
+						"specScript": ""
+					},
+					"hided": false,
+					"id": 169772,
+					"locked": false,
+					"title": ""
+				}
+			],
+			"createTime": 1598941822000,
+			"createUser": "dushihua2",
+			"height": 1344,
+			"id": 129,
+			"modifyTime": 1632406838000,
+			"modifyUser": "dushihua2",
+			"thumbnail": "",
+			"width": 2389,
+			"zoomType": 1
+		},
+		"createTime": 1598941822000,
+		"createUser": "dushihua2",
+		"id": 146,
+		"modifyTime": 1598941822000,
+		"modifyUser": "dushihua2",
+		"name": "jjjjj-copy-copy",
+		"spaceId": 10,
+		"type": 0
+	},
+	"message": "SUCCESS"
+}
