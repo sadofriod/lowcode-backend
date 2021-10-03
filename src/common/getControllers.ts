@@ -5,8 +5,6 @@ const controllerDir = "../controller";
 
 const getControllers = async (): Promise<Promise<any>> => {
 	try {
-		console.log(path.resolve(__dirname, controllerDir));
-
 		const files = await new Promise<string[]>((res, rej) =>
 			fs.readdir(path.resolve(__dirname, controllerDir), (err, files) => {
 				if (err) {

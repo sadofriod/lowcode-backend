@@ -30,7 +30,6 @@ const main = async () => {
 			});
 		});
 	});
-
 	app.use(jsonParser);
 	app.use(urlencodedParser);
 	// const dbconnect = db();
