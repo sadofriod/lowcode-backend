@@ -18,7 +18,7 @@ const jsonParser = json();
 
 const urlencodedParser = urlencoded({ extended: false, limit: 1024 * 1024 * 5 });
 
-const cros = (req: Request, res: Response) => {
+const cros = (req: Request, res: Response, next: NextFunction) => {
 	/**
 	 * Access-Control-Allow-Origin: https://foo.example
 	 * Access-Control-Allow-Methods: POST, GET, OPTIONS
@@ -28,6 +28,7 @@ const cros = (req: Request, res: Response) => {
 	res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
 	res.setHeader("Access-Control-Allow-Credentials", "true");
 	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+	next();
 };
 
 const main = async () => {

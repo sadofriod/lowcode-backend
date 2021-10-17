@@ -9,7 +9,7 @@ declare namespace IResponse {
 
 	//General response structure
 	interface Common<T = any> {
-		data: T;
+		data?: T;
 		message: string;
 		code: CustomizeResponseCode;
 	}
