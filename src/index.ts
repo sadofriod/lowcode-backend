@@ -27,7 +27,7 @@ const cros = (req: Request, res: Response, next: NextFunction) => {
 	res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
 	res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
 	res.setHeader("Access-Control-Allow-Credentials", "true");
-	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+	res.setHeader("Access-Control-Allow-Headers", "Content-Type,x-referer");
 	next();
 };
 
