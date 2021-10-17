@@ -1,7 +1,7 @@
 import { AnyError, Collection, Db, Document, MongoClient } from "mongodb";
 import configMockData from "src/mockdata/config.json";
 
-const url = `mongodb://localhost:27017`;
+const url = `mongodb://127.0.0.1:27017`;
 
 const client = new MongoClient(url);
 
@@ -12,12 +12,16 @@ type CollectionName = "config" | "user";
 const collections: CollectionName[] = ["config", "user"];
 
 const createCollection = (db: Db, name: string) => {
-	return new Promise<boolean | AnyError | Collection<Document>>((res, rej) =>
+	return new Promise<AnyError | Collection<Document>>((res, rej) =>
 		db.listCollections({ name }).next((err, collinfo) => {
 			if (collinfo) {
-				res(true);
+				res(db.collection(collinfo.name));
 			} else {
-				db.createCollection(name).then((val) => res(val));
+				db.createCollection(name).then((val) => {
+					//Set default val
+					val.insertMany([configMockData]);
+					res(val);
+				});
 			}
 			if (err) {
 				rej(err);
@@ -37,14 +41,11 @@ const db = async () => {
 		};
 		for (const item of collections) {
 			const collection = await createCollection(db, item);
-			console.log(collection);
 			if (!(collection instanceof Collection)) {
 				continue;
 			} else {
 				result[item] = collection;
 			}
-			collection.insertMany([configMockData]);
-			result[item] = collection;
 		}
 		return result;
 	} catch (error) {
@@ -53,6 +54,6 @@ const db = async () => {
 	}
 };
 
-const DBCollection = () => db();
+const DBCollection = async () => await db();
 
 export default DBCollection();

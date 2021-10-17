@@ -20,7 +20,7 @@ export const Controller = (prefix: string = ""): ClassDecorator => {
 	};
 };
 
-export const Get = (path: string): MethodDecorator => {
+const request = (path: string, method: RouteDefinition["requestMethod"]): MethodDecorator => {
 	// `target` equals our class, `propertyKey` equals our decorated method name
 	return (target, propertyKey) => {
 		// In case this is the first route to be registered the `routes` metadata is likely to be undefined at this point.
@@ -33,10 +33,15 @@ export const Get = (path: string): MethodDecorator => {
 		const routes = Reflect.getMetadata("routes", target.constructor) as Array<RouteDefinition>;
 
 		routes.push({
-			requestMethod: HTTPMethod.get,
+			requestMethod: method,
 			path,
 			methodName: propertyKey,
 		});
 		Reflect.defineMetadata("routes", routes, target.constructor);
 	};
 };
+
+export const Get = (path: string) => request(path, HTTPMethod.get);
+export const Post = (path: string) => request(path, HTTPMethod.post);
+export const Put = (path: string) => request(path, HTTPMethod.put);
+export const Delete = (path: string) => request(path, HTTPMethod.delete);
