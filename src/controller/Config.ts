@@ -47,31 +47,45 @@ export default class Config {
 	}
 
 	@Put("/appcfg/compInst")
-	public async updateAppConfigure(req: Request<any, any, Service.CompInstEditReqData[]>, res: Response<IResponse.Common>) {
-		console.log(" trigger put");
+	public async updateAppConfigure(req: Request<any, any, Service.CompInstEditReqData[], { canvas: number }>, res: Response<IResponse.Common>) {
 		try {
 			const compInsts = req.body;
-			const filter: { code: string[] } = { code: [] };
+			const { canvas } = req.query;
+			const filter: { [key: string]: string | number } = {};
 			const updater: UpdateFilter<any>[] = [];
 			for (let index = 0; index < compInsts.length; index++) {
 				const { code, key, value } = compInsts[index];
 				// filter.push({
-				// 	"canvas.compInsts.code": code,
+				// 	"canvas.compInsts.code": code, 
 				// });
 				// updater["$set"] = [
 				// 	...updater["$set"],
 				// 	[`canvas.compInsts.${key}`]: value,
 				// ];
 
-				filter.code.push;
+				filter["canvas.id"] = Number(canvas);
 
-				updater.push({
-					$set: { [`canvas.compInsts.${key}`]: value },
-				});
+				filter['canvas.compInsts.code'] = code
+
+				updater.push(
+					{
+						$set: {
+							[`canvas.compInsts.${key}`]: {$eq: ["$code",code],value}
+						}
+					});
 			}
-			console.log(updater);
+			console.log(filter, await this.collection
+				?.find<IResponse.AppConfigure>(filter).toArray()
+			);
 
-			await this.collection?.updateMany(filter, updater);
+			await this.collection?.updateOne(filter, updater, {}, (err, res) => {
+				if (err) {
+					return console.log('update error' + err);
+				}
+				console.log('update finish', res)
+			});
+
+			// await this.collection?.updateMany(filter, updater);
 			res.json({
 				code: 200,
 				message: "SUCCESS",
