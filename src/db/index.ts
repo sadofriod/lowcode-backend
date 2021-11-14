@@ -2,6 +2,8 @@ import { AnyError, Collection, Db, Document, MongoClient } from "mongodb";
 import configMockData from "src/mockdata/config.json";
 
 const url = `mongodb://127.0.0.1:27017`;
+//mongodb://admin:pass@localhost:27017/db?ssl=false
+// const url = `mongodb://admin:pass@localhost:27017/db?ssl=false`;
 
 const client = new MongoClient(url);
 
